@@ -37,7 +37,6 @@ public class Clock {
         return this.sec;
     }
     void printTime(){
-        System.out.println("Clock is 24 hour format");
         String time = String.format("Local Time (hr:min:sec): %02d:%02d:%02d", getHours(), getMinutes(), getSeconds());
         System.out.println(time);
     }
@@ -48,6 +47,13 @@ public class Clock {
         }
         return this.sec++;    
     }
+    int decrementSeconds(){
+        if(this.sec == 0){
+            sec = 59;
+            return decrementMinutes();
+        }
+        return this.sec--;
+    }
     int incrementMinutes(){
         if(min == 59){
             min = 0;
@@ -55,12 +61,25 @@ public class Clock {
         }
         return this.min++;
     }
+    int decrementMinutes(){
+        if(this.min == 0){
+            this.min = 59;
+            return decrementHours();
+        }
+        return this.min--;
+    }
     int incrementHours(){
         if(hr == 24){
             hr = 0;
             return this.hr;
         }
         return this.hr++;
+    }
+    int decrementHours(){
+        if(this.hr == 0){
+            return this.hr = 24;
+        }
+        return this.hr--;
     }
     boolean equals(Clock c){ 
         return (hr == c.hr && min == c.min && sec == c.sec);

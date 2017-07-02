@@ -5,10 +5,7 @@
  */
 package clockdemo;
 
-/**
- *
- * @author 3rd Year Account
- */
+
 public class ClockDemo {
     public static void main (String[] args){
         
